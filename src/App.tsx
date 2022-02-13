@@ -49,7 +49,11 @@ function App() {
   };
 
   const randomPerson = () => {
-    setIndex(Math.floor(Math.random() * data.length));
+    let randomNum = Math.floor(Math.random() * data.length);
+    if (randomNum === index) {
+      randomNum++;
+    }
+    setIndex(calcIndex(randomNum));
   };
 
   const moveBack = () => {
@@ -64,19 +68,19 @@ function App() {
     <main className='w-[90vh] max-w-[620px] mx-auto my-20'>
       <section>
         <div className='mb-16 text-center'>
-          <h2 className='text-4xl tracking-widest font-bold mb-3'>
+          <h2 className='mb-3 text-4xl font-bold tracking-widest'>
             Our Reviews
           </h2>
           <div className='w-[6rem] h-[0.25rem] bg-[#49a6e9] m-auto'></div>
         </div>
         <div>
-          <article className='bg-white rounded shadow-2xl p-6 text-center'>
+          <article className='p-6 text-center bg-white rounded shadow-2xl'>
             <div className='relative w-[150px] h-[150px] mt-0 mx-auto mb-[1.5rem] z-10'>
               <div className='absolute ml-2 -mt-1 h-[150px] w-[150px] rounded-full bg-[#49a6e9] -z-10'></div>
               <img
                 src={img}
                 alt={name}
-                className='rounded-full w-full h-full object-cover'
+                className='object-cover w-full h-full rounded-full'
               />
               <span className='absolute top-0 left-0 bg-[#49a6e9] text-white w-[2.5rem] h-[2.5rem] rounded-full p-3'>
                 <svg
